@@ -1,0 +1,166 @@
+@import "base";
+
+.container {
+   width: 100vw;
+   height: 100vh;
+   position: relative;
+}
+
+.background-img {
+   position: absolute;
+   z-index: -1;
+   width: 100%;
+   height: 100%;
+   background: url(https://tinyurl.com/ymjrsrxe) no-repeat center center/cover;
+   opacity: 0.7;
+}
+
+.form-container {
+   position: absolute;
+   z-index: 1;
+   @include centering;
+   width: 22.5rem;
+   height: 37rem;
+   background-color: $primary;
+   border-radius: 1rem;
+   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1), -10px 0px 10px rgba(0, 0, 0, 0.1);
+   display: grid;
+   place-items: center;
+
+   &-heading {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $secondary;
+      opacity: 0.8;
+      margin-top: 2rem;
+   }
+
+   &-mainForm {
+      transform: translateY(-1rem);
+      height: 70%;
+   }
+
+   .form-group {
+      transition: all 300ms;
+
+      // &:focus-within {
+      //    transform: scale(1.05, 1.05);
+      // }
+
+      &-input {
+         width: 100%;
+         height: 3rem;
+         color: rgba($color: $secondary, $alpha: 0.9);
+         padding: 0.5rem 2rem;
+         outline: none;
+         border-radius: 12px;
+         border: 1px solid $primary;
+         background-color: $primary;
+         box-shadow: inset 5px 5px 8px $tertiary, inset -5px -5px 8px #ffffff;
+         transition: all 300ms;
+      }
+
+      &-input::placeholder {
+         color: transparent;
+      }
+
+      &-label {
+         width: 25%;
+         font-size: 0.8rem;
+         color: $secondary;
+         opacity: 0.5;
+         display: block;
+         transform: translate(2rem, -2rem);
+         transform-origin: top right;
+         transition: all 200ms;
+      }
+
+      // animate the form labels on input:focus,
+      // prevent label to come down when input occupied
+      &-input:focus + .form-group-label,
+      &-input:not(:placeholder-shown) + .form-group-label {
+         transform: translate(12.5rem, -4.4rem);
+         opacity: 0.9;
+         font-weight: bold;
+      }
+   }
+
+   .form-group:last-child {
+      margin-top: 1rem;
+   }
+
+   &-button {
+      @include buttonStyles;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3ch;
+      color: white;
+      background-color: $accent;
+      opacity: 0.7;
+      padding: 0.9rem 2.5rem;
+      border-radius: 2rem;
+      box-shadow: 3px 3px 8px $tertiary, -3px -3px 8px 10px #ffffff;
+      transform: translateY(-2rem);
+      transition: background-color 200ms linear;
+
+      &:hover {
+         background-color: lighten($color: $accent, $amount: 10%);
+      }
+
+      &:active {
+         background-color: darken($color: $accent, $amount: 10%);
+      }
+   }
+
+   &-message {
+      font-size: 0.75rem;
+      color: $secondary;
+      opacity: 0.7;
+   }
+
+   &-socials {
+      @include flexManagement(row, space-around, center);
+      width: 30%;
+      height: 60%;
+      transform: translateY(-2rem);
+   }
+
+   .facebook,
+   .google {
+      @include buttonStyles;
+      font-size: 1.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: white;
+      border-radius: 50%;
+      border: 1px solid white;
+      border: 1px solid $primary;
+      background-color: $primary;
+      box-shadow: 5px 5px 8px $tertiary, -5px -5px 8px #ffffff;
+      transition: transform 200ms linear;
+
+      a {
+         display: block;
+         text-align: center;
+         width: 100%;
+         height: 100%;
+         border-radius: 50%;
+         color: $accent;
+      }
+
+      &:hover {
+         transform: scale(1.15, 1.15);
+      }
+   }
+
+   &-bottom-info {
+      font-size: 0.8rem;
+      color: $accent;
+      transition: transform 300ms linear;
+
+      &:hover {
+         cursor: pointer;
+         transform: translateY(-0.15rem);
+      }
+   }
+}
